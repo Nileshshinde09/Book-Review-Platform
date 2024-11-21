@@ -37,7 +37,7 @@ const LoginForm = () => {
     }
   };
   return (
-    <Card className="mx-auto max-w-sm">
+    <Card className="mx-auto max-w-sm shadow-sm shadow-black">
       <CardHeader>
         <CardTitle className="text-2xl">Login</CardTitle>
         <CardDescription>

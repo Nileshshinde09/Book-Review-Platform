@@ -7,8 +7,8 @@ const isAdmin = true;
 const _NavigationMenu = () => {
   const router = useNavigate();
   return (
-    <div className="w-[96%] mx-auto mt-2 h-12 bg-white/5 backdrop-blur-sm shadow-sm shadow-black border-spacing-2 rounded-lg flex justify-between p-1 space-x-2">
-      <img
+    <div className="absolute dark:shadow-white  left-0 right-0 w-[96%] mx-auto mt-2 h-12 bg-white/5 backdrop-blur-sm shadow-sm shadow-black border-spacing-2 rounded-lg flex justify-between p-1 space-x-2">
+      <img                                              
         src={"/kitabe-logo-bw.png"}
         className="object-contain h-auto cursor-pointer"
         alt="app-logo"

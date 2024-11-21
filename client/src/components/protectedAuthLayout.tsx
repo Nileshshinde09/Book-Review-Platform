@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { useAppSelector } from "../store/hooks";
 interface ProtectedAuthLayoutProps {
   children: React.ReactNode;
   authentication: boolean;
@@ -13,8 +13,8 @@ const ProtectedAuthLayout: React.FC<ProtectedAuthLayoutProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const [loader, setLoader] = useState(true);
+  const authStatus=useAppSelector(state=>state.user.AuthState)||false;
 
-  const authStatus = true; 
   useEffect(() => {
     if (!authentication) {
       navigate("/login", { state: { from: location } });
