@@ -64,3 +64,39 @@
     @apply bg-background text-foreground;
   }
 }
+@font-face {
+  font-family: anzo1;
+  src: url(./assets/enjo1.woff2);
+}
+@font-face {
+  font-family: anzo2;
+  src: url(./assets/enjo2.woff2);
+}
+@font-face {
+  font-family: anzo3;
+  src: url(./assets/enjo3.woff2);
+}
+@font-face {
+  font-family: anzo4;
+  src: url(./assets/enjo4.woff2);
+}
+@font-face {
+  font-family: anzo5;
+  src: url(./assets/enjo5.woff2);
+}
+@font-face {
+  font-family: anzo6;
+  src: url(./assets/enjo6.woff2);
+}
+@font-face {
+  font-family: anzo7;
+  src: url(./assets/enjo7.woff2);
+}
+@font-face {
+  font-family: anzo8;
+  src: url(./assets/enjo8.woff2);
+}
+body{
+  margin: 0px 0px;
+  padding: 0px 0px;
+}

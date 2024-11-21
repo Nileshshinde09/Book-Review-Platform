@@ -1,7 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // import type { RootState } from "../store";
+export type userDataType = {
+  username: string;
+  fullName: string;
+  age: string;
+  gender: boolean | null;
+  isAdmin: boolean;
+};
 export interface UserState {
-  userData: object | null;
+  userData: userDataType | null;
   AuthState: boolean;
 }
 const initialState: UserState = {
@@ -12,7 +19,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<object>) => {
+    login: (state, action: PayloadAction<userDataType>) => {
       state.AuthState = true;
       state.userData = action.payload;
     },
