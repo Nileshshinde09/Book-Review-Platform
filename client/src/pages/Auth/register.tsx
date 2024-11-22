@@ -1,14 +1,13 @@
 import { Label } from "@radix-ui/react-label";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
-import { signUpSchema } from "../schema";
+import { signUpSchema } from "../../schema";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
-import { useDocumentTitle } from "usehooks-ts";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "../../hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -16,18 +15,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../components/ui/form";
+} from "../../components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../components/ui/select";
+} from "../../components/ui/select";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Auth } from "../services";
+import { Auth } from "../../services";
 
 type SignUpFormValues = z.infer<typeof signUpSchema>;
 

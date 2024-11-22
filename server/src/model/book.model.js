@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { GenreEnum,AccessibilityEnum } from "../validator/schema/index.js";
 import { ACCESSIBILITY_TYPES_ENUM } from "../constants.js";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 const bookSchema = new Schema(
   {
     title: { type: String, required: true },
@@ -22,4 +23,5 @@ const bookSchema = new Schema(
     timestamps: true,
   }
 );
+bookSchema.plugin(mongooseAggregatePaginate)
 export const Books = mongoose.model("Books", bookSchema);

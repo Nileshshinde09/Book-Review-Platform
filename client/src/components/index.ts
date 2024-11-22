@@ -3,5 +3,16 @@ import { ModeToggle } from "./mode-toggle";
 import PageNotFound from "./pageNotFound";
 import NavBar from "./navBar";
 import LoginForm from "./login-form";
-
-export { LoginForm, NavBar, ProtectedAuthLayout, ModeToggle, PageNotFound };
+import Pagination from "./pagination";
+import BookCard from "./bookCard";
+import ReviewStar from "./reviewStart";
+export {
+  ReviewStar,
+  BookCard,
+  LoginForm,
+  NavBar,
+  ProtectedAuthLayout,
+  ModeToggle,
+  PageNotFound,
+  Pagination,
+};
