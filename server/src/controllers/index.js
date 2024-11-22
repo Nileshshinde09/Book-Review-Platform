@@ -1,4 +1,5 @@
 import { healthcheck } from "./healthcheck.controller.js";
+
 import {
   changeCurrentPassword,
   createProfile,
@@ -26,3 +27,4 @@ export {
   registerUser,
   updateAccountDetails,
 };
+

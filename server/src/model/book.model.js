@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { GenreEnum } from "../validator/schema/index.js";
+import { GenreEnum,AccessibilityEnum } from "../validator/schema/index.js";
+import { ACCESSIBILITY_TYPES_ENUM } from "../constants.js";
 const bookSchema = new Schema(
   {
     title: { type: String, required: true },
@@ -11,6 +12,11 @@ const bookSchema = new Schema(
       required: [true, "please provide book genre."],
     },
     publishedDate: { type: Date },
+    accessibility:{
+      type:String,
+      enum:AccessibilityEnum,
+      default:ACCESSIBILITY_TYPES_ENUM.PUBLIC
+    }
   },
   {
     timestamps: true,
