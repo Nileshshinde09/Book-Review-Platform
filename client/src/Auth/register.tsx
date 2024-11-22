@@ -100,7 +100,7 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="w-">
+    <div className="w-[22rem] mx-auto">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid gap-2 text-center">

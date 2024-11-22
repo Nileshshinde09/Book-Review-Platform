@@ -72,7 +72,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className='w-1/4 mx-auto mt-20'>
+    <div className='w-[22rem] mx-auto sm:mt-10'>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid gap-2 text-center">
@@ -91,8 +91,9 @@ const Login: React.FC = () => {
                   <FormLabel className="text-black dark:text-white">Email</FormLabel>
                   <Input
                     id="email"
-                    type="email"
+                    // type="email"
                     placeholder="m@example.com"
+                    className='text-black dark:text-white'
                     {...field}
                   />
                   <FormMessage />
@@ -121,6 +122,7 @@ const Login: React.FC = () => {
                     id="password"
                     type="password"
                     placeholder="abc123"
+                    className='text-black dark:text-white'
                     {...field}
                   />
                   <FormMessage />

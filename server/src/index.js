@@ -8,9 +8,9 @@ dotenv.config({
 const startServer = () => {
   app.listen(process.env.PORT || 8000, () => {
     console.info(
-      `📑 Visit the documentation at: http://localhost:${
+      `🩺 Healthcheck at: http://localhost:${
         process.env.PORT || 8080
-      }`
+      }/api/v1/healthcheck`
     );
     console.log(`⚙️  Server is running at port : ${process.env.PORT}`);
   });

@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import { limiter } from "./middleware/index.js"
+import { limiter } from "./middlewares/index.js"
 import requestIp from "request-ip"
 
 
@@ -33,6 +33,12 @@ app.use(cookieParser());
 //-------------------------------------------------------------
 import healthcheck from "./routes/healthcheck.routes.js"
 app.use("/api/v1/healthcheck", healthcheck)
+//-------------------------------------------------------------
+
+//HealthCheck route
+//-------------------------------------------------------------
+import user from "./routes/user.routes.js"
+app.use("/api/v1/healthcheck", user)
 //-------------------------------------------------------------
 
 export {app};
