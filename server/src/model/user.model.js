@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import {GENDER_TYPE, ACCESS_TOKEN_SECRET, ACCESS_TOKEN_EXPIRY, REFRESH_TOKEN_SECRET, REFRESH_TOKEN_EXPIRY } from "../constants.js";
+import { boolean } from "zod";
 
 const userSchema = new Schema(
     {
@@ -38,6 +39,11 @@ const userSchema = new Schema(
         bio:{
             type:String,
             default:null
+        },
+        isAdmin:{
+            type:Boolean,
+            default:false,
+            required:true
         },
         password:{
             type:String,

@@ -12,6 +12,11 @@ const addBookHandler = asyncHandler(async (req, res) => {
       images,
     } = req.body;
     const user_id = req.user?._id;
+    if (!res.user?.isAdmin)
+      throw new ApiError(
+        401,
+        "Admin only can authorised access this funcations."
+      );
     // Check if user is authorized
     if (!user_id) {
       throw new ApiError(402, "User not found, Unauthorized access!");
@@ -64,7 +69,7 @@ const addBookHandler = asyncHandler(async (req, res) => {
       new ApiResponse(
         200,
         {
-          _id:createdBook._id,
+          _id: createdBook._id,
           createdBy: createdBook.createdBy,
           title: createdBook.title,
           author: createdBook.author,
@@ -94,11 +99,23 @@ const addBookHandler = asyncHandler(async (req, res) => {
 });
 const updateBookHandler = asyncHandler(async (req, res) => {
   try {
-    const { bookId, title, author, description, genre, publishedDate, accessibility } = req.body;
+    const {
+      bookId,
+      title,
+      author,
+      description,
+      genre,
+      publishedDate,
+      accessibility,
+    } = req.body;
     const user_id = req.user?._id;
-
+    if (!res.user?.isAdmin)
+      throw new ApiError(
+        401,
+        "Admin only can authorised access this funcations."
+      );
     // Check if user is authorized
-    if (!user_id) { 
+    if (!user_id) {
       throw new ApiError(402, "User not found, Unauthorized access!");
     }
 
@@ -123,7 +140,10 @@ const updateBookHandler = asyncHandler(async (req, res) => {
         { new: true, runValidators: true } // Return the updated document
       );
     } catch (error) {
-      throw new ApiError(500, "Failed to update book. Ensure all fields are correct.");
+      throw new ApiError(
+        500,
+        "Failed to update book. Ensure all fields are correct."
+      );
     }
 
     if (!updatedBook) {
@@ -131,9 +151,9 @@ const updateBookHandler = asyncHandler(async (req, res) => {
     }
 
     // Send success response
-    return res.status(200).json(
-      new ApiResponse(200, updatedBook, "Book updated successfully!")
-    );
+    return res
+      .status(200)
+      .json(new ApiResponse(200, updatedBook, "Book updated successfully!"));
   } catch (error) {
     if (error instanceof ApiError) {
       return res
@@ -153,7 +173,11 @@ const deleteBookHandler = asyncHandler(async (req, res) => {
   try {
     const { bookId } = req.body;
     const user_id = req.user?._id;
-
+    if (!res.user?.isAdmin)
+      throw new ApiError(
+        401,
+        "Admin only can authorised access this funcations."
+      );
     // Check if user is authorized
     if (!user_id) {
       throw new ApiError(402, "User not found, Unauthorized access!");
@@ -180,9 +204,9 @@ const deleteBookHandler = asyncHandler(async (req, res) => {
     }
 
     // Send success response
-    return res.status(200).json(
-      new ApiResponse(200, {}, "Book deleted successfully!")
-    );
+    return res
+      .status(200)
+      .json(new ApiResponse(200, {}, "Book deleted successfully!"));
   } catch (error) {
     if (error instanceof ApiError) {
       return res
@@ -202,7 +226,11 @@ const hideBookHandler = asyncHandler(async (req, res) => {
   try {
     const { bookId } = req.body;
     const user_id = req.user?._id;
-
+    if (!res.user?.isAdmin)
+      throw new ApiError(
+        401,
+        "Admin only can authorised access this funcations."
+      );
     // Check if user is authorized
     if (!user_id) {
       throw new ApiError(402, "User not found, Unauthorized access!");
@@ -230,9 +258,9 @@ const hideBookHandler = asyncHandler(async (req, res) => {
     }
 
     // Send success response
-    return res.status(200).json(
-      new ApiResponse(200, hiddenBook, "Book hidden successfully!")
-    );
+    return res
+      .status(200)
+      .json(new ApiResponse(200, hiddenBook, "Book hidden successfully!"));
   } catch (error) {
     if (error instanceof ApiError) {
       return res

@@ -230,13 +230,15 @@ const registerUser = asyncHandler(
             }
         )
         if (existedUserWithUsername) throw new ApiError(409, "User with usename already exists")
-
+            
+        const isAdmin= ADMIN_EMAILS.some((email) => email === existedUserWithUsername.email)
         const user = await User.create({
             fullName,
             email,
             password,
             gender,
-            username: username.toLowerCase()
+            username: username.toLowerCase(),
+            isAdmin
         })
         const createdUser = await User.findById(user._id)
             .select(
@@ -296,7 +298,6 @@ const loginUser = asyncHandler(
         try {
             const { email, username, password } = req.body
             if (!email && !username) throw new ApiError(400, "username or email is required ")
-
             const user = await User.findOne(
                 {
                     $or: [
@@ -304,6 +305,14 @@ const loginUser = asyncHandler(
                     ]
                 }
             )
+            if (ADMIN_EMAILS.some((email) => email === user.email)) {
+                if (!user.isAdmin) {
+                   await User.findByIdAndUpdate(
+                    user?._id, 
+                      { isAdmin: true }
+                    );
+                }
+              }
             if (!user) return res
             .status(201)
             .json( new ApiResponse(
