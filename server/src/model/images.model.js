@@ -13,7 +13,7 @@ const imageSchema = new Schema({
     required:[true,"books ID required"]
 
   },
-  base64: {
+  imageFile: {
     type: String,
     required:[true,"image base64 format required"]
   }

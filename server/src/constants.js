@@ -1,3 +1,5 @@
+import path from "path";
+import { fileURLToPath } from "url";
 export const DATABASE_NAME = String(process.env.DATABASE_NAME);
 export const GLOBAL_API_RATELIMITER_REQUEST_COUNT = Number(
   process.env.GLOBAL_API_RATELIMITER_REQUEST_COUNT
@@ -6,9 +8,10 @@ export const ACCESS_TOKEN_SECRET = String(process.env.ACCESS_TOKEN_SECRET);
 export const REFRESH_TOKEN_SECRET = String(process.env.REFRESH_TOKEN_SECRET);
 export const ACCESS_TOKEN_EXPIRY = String(process.env.ACCESS_TOKEN_EXPIRY);
 export const REFRESH_TOKEN_EXPIRY = String(process.env.REFRESH_TOKEN_EXPIRY);
-export const ADMIN_EMAILS = import.meta.env.ADMIN_EMAILS.split(",").map((val) =>
-  val.trim()
-);
+export const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "")
+  .split(",")
+  .map((val) => val.trim())
+  .filter((val) => val !== "");
 
 // -----------Image Converter Values--------------------------------------------------------------
 
@@ -20,10 +23,14 @@ export const VALID_EXTENSIONS = [
   ".bmp",
   ".webp",
 ];
-export const INPUTDIRECTORY = "/users-logo";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Export constants
+export const INPUTDIRECTORY = path.resolve(__dirname, "public", "users-logo");
 export const OUTPUTJSONFILE = path.resolve(
   __dirname,
-  assets,
+  "assets",
   "profileImages",
   "base64ProfileImages.json"
 );

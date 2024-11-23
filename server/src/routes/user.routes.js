@@ -14,7 +14,7 @@ const router = Router();
 
 router.route("/current-user").get(verifyJWT, getCurrentUser);
 
-router.route("/register").post(registerUser);
+router.route("/signup").post(registerUser);
 
 router.route("/login").post(loginUser);
 
