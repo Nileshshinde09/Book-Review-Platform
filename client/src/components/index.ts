@@ -6,7 +6,9 @@ import LoginForm from "./login-form";
 import Pagination from "./pagination";
 import BookCard from "./bookCard";
 import ReviewStar from "./reviewStart";
+import ProfileSubCard from "./profileSubCard";
 export {
+  ProfileSubCard,
   ReviewStar,
   BookCard,
   LoginForm,
